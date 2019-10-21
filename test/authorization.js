@@ -18,10 +18,14 @@ async function waitAndClick( locator ) {
     };
 	
 async function authorization ( ) {
-	 await waitAndClick( By.xpath( '//div/input[ @data-type = "person" ]' ) );
-     await driver.findElement( By.name( 'LoginForm[username]' ) ).sendKeys( userEmail );
-     await driver.findElement( By.name( 'LoginForm[password]' ) ).sendKeys( userPassword );
-     await driver.findElement( By.name( 'yt0' ) ).click( );
+	try {
+		 await waitAndClick( By.xpath( '//div/input[ @data-type = "person" ]' ) );
+		 await driver.findElement( By.name( 'LoginForm[username]' ) ).sendKeys( userEmail );
+		 await driver.findElement( By.name( 'LoginForm[password]' ) ).sendKeys( userPassword );
+		 await driver.findElement( By.name( 'yt0' ) ).click( );
+	 } catch(Err) {
+		console.log('This test is broken of fail' + Err);
+	}
 }
 
 driver.get( 'https://my.novaposhta.ua/auth/index' );

@@ -48,6 +48,14 @@ async function scrollToElement(locator) {
     await driver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(locator));
 }
 
+async function testEverythingAndCatchErr() {
+    try {
+	await testEverything();
+    } catch(Err) {
+	console.log(Err);
+    }
+}
+
 async function testEverything() {
     await driver.get('https://my.novaposhta.ua/auth/index');
     await driver.manage().addCookie({ name: "PHPSESSID", value: "bd2231ec3c8f0cbc3110048dbd432457" });
@@ -82,4 +90,4 @@ async function testEverything() {
 	await waitAndClick(By.id('submitNewOrderButton'));
 }
 
-testEverything();
+testEverythingAndCatchErr();

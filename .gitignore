@@ -1,18 +1,4 @@
-equest URL:https://github.com/session
-Request method:POST
-Remote address:140.82.118.4:443				
-Host:	github.com
-Referer:	https://github.com/login				
-				
-				Params
-commit	Sign+in
-utf8	✓
-authenticity_token	bmpChXKJaEDjyK7p6/WNRx8glYffDAoyw5stNDdST18j80rAo9fho5/exYfKBFNZ70WMiOoR2h2W0/aNkeWi5Q==
-ga_id	1635178675.1569830674
-login	lena.honcharenko@brocoders.team
-password	fkkfcgbdfr999
-webauthn-support	supported
-webauthn-iuvpaa-support	unsupported
-required_field_4e69	
-timestamp	1569840910155
-timestamp_secret	a4040f5f99c65acc2bd346d6fc28f0ea361af37ccc2846745466d2ad80b55da6
+node_modules/
+all/
+APITest.js
+

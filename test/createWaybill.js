@@ -48,46 +48,42 @@ async function scrollToElement(locator) {
     await driver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(locator));
 }
 
-async function testEverythingAndCatchErr() {
-    try {
-	await testEverything();
-    } catch(Err) {
-	console.log(Err);
-    }
+async function createWaybill() {
+	try {
+		await driver.get('https://my.novaposhta.ua/auth/index');
+		await driver.manage().addCookie({ name: "PHPSESSID", value: "9d348c8e8cb8bfff0ec0d8c1d216b792" });
+		await driver.manage().addCookie({ name: "DeviceCode", value: "d99f0301ca5666a56d033f5f5176dcb6" });
+		await driver.get('https://my.novaposhta.ua/auth/index');
+		await waitAndClick(By.xpath('//li/a[@href = "/newOrder/index" ]'));
+		await waitAndClick(By.id('SenderSelectButton'));
+		await setAddress("Суми", "Зеленко");
+		await waitAndSendKeys(By.id('filter_journal_contacts'), 'Гончаренко');
+		await waitAndClick(By.xpath('//ul[@id = "contacts_ul"]/li[1][@data-lastname = "Гончаренко" ]'));
+		await waitAndClick(By.id("selectCounterpartyButton"));
+		await waitAndClick(By.id("RecipientSelectButton"));
+		await setAddress("Полтава", "Ковпака");
+		await createContact("Гончаренко", "Елена", "Александровна", "0951612597");
+		await waitElementIsVisible(By.id('filter_journal_contacts'));
+		await waitAndSendKeys(By.id('filter_journal_contacts'), 'Гончаренко');
+		await waitAndClick(By.xpath('//ul[@id = "contacts_ul"]/li[1][@data-lastname = "Гончаренко" ]'));
+		await waitAndClick(By.id("selectCounterpartyButton"));
+		await scrollToElement(By.xpath('//div[@id = "blockTypesOfPayers"]/div/button[@id = "RecipientPayer"]'));
+		await waitElementIsVisible(By.xpath('//div[@id = "blockTypesOfPayers"]/div/button[@id = "RecipientPayer"]'));
+		await waitAndClick(By.xpath('//div[@id = "blockTypesOfPayers"]/div/button[@id = "RecipientPayer"]'));
+		await waitAndClick(By.xpath('//div[@id = "blockPaymentsForms"]/button[@data-type = "Cash"]'));
+		await waitAndClick(By.xpath('//span[@id = "cargoTypesSelectBoxIt"]/span[@id = "cargoTypesSelectBoxItArrowContainer"]'));
+		await waitElementIsVisible(By.xpath('//ul[@id = "cargoTypesSelectBoxItOptions"]/li[@data-val = "Cargo"]'));
+		await waitAndClick(By.xpath('//ul[@id = "cargoTypesSelectBoxItOptions"]/li[@data-val = "Cargo"]'));
+		await waitAndSendKeys(By.id('Weight'), '50');
+		await waitAndSendKeys(By.id('VolumeGeneral'), '0.01');
+		await waitAndSendKeys(By.id('seatsAmount'), '1');
+		await waitAndSendKeys(By.id('cost'), '1');
+		await waitAndSendKeys(By.id('Description'), 'масажер');
+		await waitAndClick(By.xpath('//ul[@class = "typeahead dropdown-menu"]/li[@data-value = "масажер"]'));
+		await waitAndClick(By.id('submitNewOrderButton'));
+	} catch(Err) {
+		console.log('This test is broken of fail');
+	}
 }
 
-async function testEverything() {
-    await driver.get('https://my.novaposhta.ua/auth/index');
-    await driver.manage().addCookie({ name: "PHPSESSID", value: "bd2231ec3c8f0cbc3110048dbd432457" });
-    await driver.manage().addCookie({ name: "DeviceCode", value: "d99f0301ca5666a56d033f5f5176dcb6" });
-    await driver.get('https://my.novaposhta.ua/auth/index');
-    await waitAndClick(By.xpath('//li/a[@href = "/newOrder/index" ]'));
-    await waitAndClick(By.id('SenderSelectButton'));
-    await setAddress("Суми", "Зеленко");
-    await waitAndSendKeys(By.id('filter_journal_contacts'), 'Гончаренко');
-    await waitAndClick(By.xpath('//ul[@id = "contacts_ul"]/li[1][@data-lastname = "Гончаренко" ]'));
-    await waitAndClick(By.id("selectCounterpartyButton"));
-    await waitAndClick(By.id("RecipientSelectButton"));
-    await setAddress("Полтава", "Ковпака");
-    await createContact("Гончаренко", "Елена", "Александровна", "0951612597");
-    await waitElementIsVisible(By.id('filter_journal_contacts'));
-    await waitAndSendKeys(By.id('filter_journal_contacts'), 'Гончаренко');
-    await waitAndClick(By.xpath('//ul[@id = "contacts_ul"]/li[1][@data-lastname = "Гончаренко" ]'));
-    await waitAndClick(By.id("selectCounterpartyButton"));
-    await scrollToElement(By.xpath('//div[@id = "blockTypesOfPayers"]/div/button[@id = "RecipientPayer"]'));
-    await waitElementIsVisible(By.xpath('//div[@id = "blockTypesOfPayers"]/div/button[@id = "RecipientPayer"]'));
-    await waitAndClick(By.xpath('//div[@id = "blockTypesOfPayers"]/div/button[@id = "RecipientPayer"]'));
-    await waitAndClick(By.xpath('//div[@id = "blockPaymentsForms"]/button[@data-type = "Cash"]'));
-	await waitAndClick(By.xpath('//span[@id = "cargoTypesSelectBoxIt"]/span[@id = "cargoTypesSelectBoxItArrowContainer"]'));
-    await waitElementIsVisible(By.xpath('//ul[@id = "cargoTypesSelectBoxItOptions"]/li[@data-val = "Cargo"]'));
-    await waitAndClick(By.xpath('//ul[@id = "cargoTypesSelectBoxItOptions"]/li[@data-val = "Cargo"]'));
-    await waitAndSendKeys(By.id('Weight'), '50');
-    await waitAndSendKeys(By.id('VolumeGeneral'), '0.01');
-    await waitAndSendKeys(By.id('seatsAmount'), '1');
-    await waitAndSendKeys(By.id('cost'), '1');
-    await waitAndSendKeys(By.id('Description'), 'масажер');
-    await waitAndClick(By.xpath('//ul[@class = "typeahead dropdown-menu"]/li[@data-value = "масажер"]'));
-	await waitAndClick(By.id('submitNewOrderButton'));
-}
-
-testEverythingAndCatchErr();
+createWaybill();

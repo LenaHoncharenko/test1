@@ -8,9 +8,6 @@ let driver = new webdriver.Builder( )
     .forBrowser( 'chrome' )
     .build( );
 
-const userEmail = 'olenahoncharenko1994@gmail.com';
-const userPassword = '455515558a'
-
 function waitAndClick(locator) {
 	let button = driver.wait( until.elementLocated( locator ), 80000 );
 	button.click( );

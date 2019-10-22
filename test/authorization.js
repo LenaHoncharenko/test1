@@ -9,7 +9,7 @@ let driver = new webdriver.Builder( )
     .build( );
  
 const userEmail = 'olenahoncharenko1994@gmail.com';
-const userPassword = '455515558a'
+const userPassword = 'ENTER PASSWORD'
  
 async function waitAndClick( locator ) {
         await driver.wait( until.elementLocated( locator ), 15000 );

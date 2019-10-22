@@ -14,6 +14,7 @@
     "chai-http": "^4.3.0",
     "chromedriver": "^77.0.0",
     "coveralls": "^3.0.7",
+    "faker": "^4.1.0",
     "jquery": "^3.4.1",
     "mocha": "^6.2.2",
     "mocha-tags": "^1.0.1",
@@ -22,5 +23,17 @@
     "supertest": "^4.0.2"
   },
   "devDependencies": {},
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LenaHoncharenko/test1.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/LenaHoncharenko/test1/issues"
+  },
+  "homepage": "https://github.com/LenaHoncharenko/test1#readme",
   "description": ""
 }

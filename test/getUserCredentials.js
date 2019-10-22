@@ -1,8 +1,7 @@
-function getUserCredentials() {
-    return {
-        email: "ENTER EMAIL",
-        password: "ENTER PASSWORD"
-    }
-}
+getUserCredentials = {
+    email: "ENTER EMAIL",
+    password: "ENTER PASSWORD"
+};
 
-module.exports = getUserCredentials();
+module.exports = getUserCredentials;
+

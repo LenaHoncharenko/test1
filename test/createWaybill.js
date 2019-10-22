@@ -1,9 +1,11 @@
-let basePage = require('./basePage');
-let driver = basePage.driver();
-let By = basePage.webdriver.By;
-let waitAndClick = basePage.waitAndClick(locator);
-let waitAndSendKeys = basePage.waitAndSendKeys(locator, value);
-let waitElementIsVisible = basePage.waitElementIsVisible(locator);
+let page = require('./basePage');
+let By = page.webdriver.By;
+let waitAndClick = page.waitAndClick();
+let waitAndSendKeys = page.waitAndSendKeys();
+let waitElementIsVisible = page.waitElementIsVisible();
+let scrollToElement = page.scrollToElement();
+let authorization = require('./authorization');
+let opendAuthIndexAndAddCookie = authorization.opendAuthIndexAndAddCookie();
 
 async function setAddress(city, street) {
     await waitAndClick(By.xpath('//div[@id = "filter_journal_cities_div"][1]//div/i[@class = "icon-remove"]'));
@@ -23,16 +25,9 @@ async function createContact(lastName, firstName, middleName, phoneNumber) {
     await waitAndClick(By.xpath('//div[@class = "modal-footer my_control_cent"]/button[@id = "counterpartyContactSaveButton"]'));
 }
 
-async function scrollToElement(locator) {
-    await driver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(locator));
-}
-
 async function createWaybill() {
     try {
-        await driver.get('https://my.novaposhta.ua/auth/index');
-        await driver.manage().addCookie({ name: "PHPSESSID", value: "59d33bf649d05d63885aec5e4f79d87f" });
-        await driver.manage().addCookie({ name: "DeviceCode", value: "d99f0301ca5666a56d033f5f5176dcb6" });
-        await driver.get('https://my.novaposhta.ua/auth/index');
+        await opendAuthIndexAndAddCookie();
         await waitAndClick(By.xpath('//li/a[@href = "/newOrder/index" ]'));
         await waitAndClick(By.id('SenderSelectButton'));
         await setAddress("Суми", "Зеленко");

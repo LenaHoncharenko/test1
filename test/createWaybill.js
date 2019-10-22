@@ -1,12 +1,5 @@
-require('chromedriver');
-
-let webdriver = require('selenium-webdriver'),
-    By = webdriver.By,
-    until = webdriver.until;
-
-let driver = new webdriver.Builder()
-    .forBrowser('chrome')
-    .build();
+const Page = require('./basePage');
+console.log(Page);
 
 async function waitAndClick(locator) {
     await driver.wait(until.elementLocated(locator), 15000);

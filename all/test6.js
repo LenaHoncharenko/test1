@@ -8,8 +8,8 @@ let driver = new webdriver.Builder( )
     .forBrowser( 'chrome' )
     .build( );
 
-const userEmail = 'olenahoncharenko1994@gmail.com';
-const userPassword = '455515558a'
+const userEmail = 'ENTER EMAIL';
+const userPassword = 'ENTER PASSWORD'
 
 driver.get( 'https://my.novaposhta.ua/auth/index');
 

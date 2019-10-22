@@ -8,8 +8,7 @@ let driver = new webdriver.Builder()
     .forBrowser('chrome')
     .build();
 
-const userDate = require('./getUserCredentials.js').default;
-user = userDate.getUserCredentials();
+const user = require('./getUserCredentials');
 
 async function waitAndClick(locator) {
     await driver.wait(until.elementLocated(locator), 15000);

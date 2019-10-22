@@ -8,7 +8,7 @@ let driver = new webdriver.Builder( )
     .forBrowser( 'chrome' )
     .build( );
  
-const userEmail = 'olenahoncharenko1994@gmail.com';
+const userEmail = 'ENTER EMAIL';
 const userPassword = 'ENTER PASSWORD'
  
 async function waitAndClick( locator ) {

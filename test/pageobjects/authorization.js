@@ -15,7 +15,7 @@ async function opendAuthIndex() {
 async function opendAuthIndexAndAddCookie() {
     try {
         await opendAuthIndex();
-        await driver.manage().addCookie({ name: "PHPSESSID", value: "5575491b79de81fdcf9469c52d985f85" });
+        await driver.manage().addCookie({ name: "PHPSESSID", value: "284298445a68fd92bddef1d3d9b3877c" });
         await driver.manage().addCookie({ name: "DeviceCode", value: "d99f0301ca5666a56d033f5f5176dcb6" });
         await opendAuthIndex();
     } catch (Err) {

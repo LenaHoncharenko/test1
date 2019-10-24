@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --exit",
+    "test": "mocha --exit --timeout 10000",
     "start": "node app",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
@@ -15,6 +15,7 @@
     "chromedriver": "^77.0.0",
     "coveralls": "^3.0.7",
     "faker": "^4.1.0",
+    "global": "^4.4.0",
     "jquery": "^3.4.1",
     "mocha": "^6.2.2",
     "mocha-tags": "^1.0.1",

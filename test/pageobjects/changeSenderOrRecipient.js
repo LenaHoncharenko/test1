@@ -16,7 +16,16 @@ async function setAddress(city, street) {
         console.log('Set address is failed: ' + Err);
     }
 }
-
+/*
+async function getAddressText() {
+    try {
+        let getAddressElement = await waitAndClick(By.xpath(`//li[@class = "browser_element_main active"]/a[1]`));
+        return await getAddressElement.getText();
+    } catch (Err) {
+        console.log('The city or the street you entered does not exist: ' + Err);
+    }
+}
+*/
 async function createContact(lastName, firstName, middleName, phoneNumber) {
     try {
         await waitAndClick(By.xpath('//div/a[@class = "btn btn-np btn-second createContact"]'));
@@ -41,9 +50,17 @@ async function setContact(lastName) {
     }
 }
 
-async function changeSender(city, street, lastName) {
+async function openChangeSender() {
     try {
         await waitAndClick(By.id('SenderSelectButton'));
+    } catch (Err) {
+        console.log('Unable to open change sender: ' + Err);
+    }
+}
+
+async function changeSender(city, street, lastName) {
+    try {
+        await openChangeSender();
         await setAddress(city, street);
         await setContact(lastName);
         await waitAndClick(By.id("selectCounterpartyButton"));
@@ -52,9 +69,17 @@ async function changeSender(city, street, lastName) {
     }
 }
 
-async function changeRecipient(city, street, lastName, firstName, middleName, phoneNumber) {
+async function openChangeRecipient() {
     try {
         await waitAndClick(By.id("RecipientSelectButton"));
+    } catch (Err) {
+        console.log('Unable to open change recipient: ' + Err);
+    }
+}
+
+async function changeRecipient(city, street, lastName, firstName, middleName, phoneNumber) {
+    try {
+        await openChangeRecipient();
         await setAddress(city, street);
         await createContact(lastName, firstName, middleName, phoneNumber);
         await setContact(lastName);
@@ -66,8 +91,11 @@ async function changeRecipient(city, street, lastName, firstName, middleName, ph
 
 module.exports = {
     'setAddress': setAddress,
+    //'getAddressText': getAddressText,
     'createContact': createContact,
     'setContact': setContact,
+    'openChangeSender': openChangeSender,
     'changeSender': changeSender,
+    'openChangeRecipient': openChangeRecipient,
     'changeRecipient': changeRecipient,
 }

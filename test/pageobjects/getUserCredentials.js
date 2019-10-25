@@ -1,6 +1,6 @@
 getUserCredentials = {
-    email: "email",
-    password: "password"
+    email: "ENTER EMAIL",
+    password: "ENTER PASSWORD"
 };
 
 module.exports = getUserCredentials;

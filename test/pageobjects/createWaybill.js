@@ -5,19 +5,19 @@ let waitAndSendKeys = page.waitAndSendKeys;
 let waitElementIsVisible = page.waitElementIsVisible;
 let scrollToElement = page.scrollToElement;
 let authorization = require('./authorization');
-let opendAuthIndexAndAddCookie = authorization.opendAuthIndexAndAddCookie;
+let openAuthIndexAndAddCookie = authorization.openAuthIndexAndAddCookie;
 let changeSenderOrRecipient = require('./changeSenderOrRecipient');
 let changeSender = changeSenderOrRecipient.changeSender;
 let changeRecipient = changeSenderOrRecipient.changeRecipient;
 
-async function opendNewOrder() {
+async function openNewOrder() {
     await waitAndClick(By.xpath('//li/a[@href = "/newOrder/index" ]'));
 }
 
 async function createWaybill() {
     try {
-        await opendAuthIndexAndAddCookie();
-        await opendNewOrder();
+        await openAuthIndexAndAddCookie();
+        await openNewOrder();
         await changeSender("Суми", "Зеленко", "Гончаренко")
         await changeRecipient("Полтава", "Ковпака", "Гончаренко", "Елена", "Александровна", "0951612597");
         await scrollToElement(By.xpath('//div[@id = "blockTypesOfPayers"]/div/button[@id = "RecipientPayer"]'));
@@ -39,4 +39,7 @@ async function createWaybill() {
     }
 }
 
-createWaybill();
+module.exports = {
+    'openNewOrder': openNewOrder,
+    'createWaybill': createWaybill,
+};

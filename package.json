@@ -1,26 +1,40 @@
 {
-  "name": "js-tests",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha --exit",
-    "start": "node app",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "chromedriver": "^77.0.0",
-    "coveralls": "^3.0.7",
-    "jquery": "^3.4.1",
-    "mocha": "^6.2.2",
-    "mocha-tags": "^1.0.1",
-    "nyc": "^14.1.1",
-    "selenium-webdriver": "^4.0.0-alpha.5",
-    "supertest": "^4.0.2"
-  },
-  "devDependencies": {},
-  "description": ""
+    "name": "js-tests",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha --exit --timeout 50000",
+        "start": "node app",
+        "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "chai": "^4.2.0",
+        "chai-http": "^4.3.0",
+        "chromedriver": "^77.0.0",
+        "coveralls": "^3.0.7",
+        "faker": "^4.1.0",
+        "global": "^4.4.0",
+        "jquery": "^3.4.1",
+        "mocha": "^6.2.2",
+        "mocha-tags": "^1.0.1",
+        "nyc": "^14.1.1",
+        "selenium-webdriver": "^4.0.0-alpha.5",
+        "supertest": "^4.0.2"
+    },
+    "devDependencies": {},
+    "directories": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LenaHoncharenko/test1.git"
+    },
+    "keywords": [],
+    "bugs": {
+        "url": "https://github.com/LenaHoncharenko/test1/issues"
+    },
+    "homepage": "https://github.com/LenaHoncharenko/test1#readme",
+    "description": ""
 }
